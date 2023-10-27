@@ -1,84 +1,268 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>【工具】获取网页源代码！</title>
-        <meta charset="utf-8"/>
-        <link rel="icon" href="/common/assets/img/logo/lightbulb.png"/>
-        <link rel="stylesheet" href="/common/assets/css/framework/bootstrap/3.3.7/css/bootstrap.css" />
-        <link rel="stylesheet" href="/common/assets/css/common.css" />
-        
-        <script src="/common/assets/js/jQuery/jquery-3.1.1.min.js"></script>
-        <script src="/common/assets/css/framework/bootstrap/3.3.7/js/bootstrap.js"></script>
-        <script src="/common/assets/js/common.js"></script>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8"/>
+	<title>文件直链平台 - 涟漪</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="文件直链,文件直连,文件直链平台,文件直连平台,直链生成,直连生成,up.ly93.cc"/>
+	<meta name="description" content="文件直链平台，可在线生成多种格式的文件直链平台"/>
+	<meta name="referrer" content="same-origin"/>
+	<link href="//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.1/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+	<link href="//lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" type="text/css" rel="stylesheet"/>
+	<link href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-fileinput/5.2.7/css/fileinput.min.css" type="text/css" rel="stylesheet"/>
+	<style>
+		.bg-navbar {
+			background-color: transparent;
+			background-image: linear-gradient(to bottom, rgba(112.520718, 44.062154, 249.437846, 1), rgba(112.520718, 44.062154, 249.437846, 0.95));
+			box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+		}
 
-        <script>
-            var _hmt = _hmt || [];
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?6ccf19719cc4cf58d2af964ee05973ad";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
-    </head>
-    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?6ccf19719cc4cf58d2af964ee05973ad";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+		.tab-content pre {
+			display: block;
+			padding: 9.5px;
+			margin: 0 0 10px;
+			font-size: 13px;
+			line-height: 1.42857143;
+			color: #333;
+			word-break: break-all;
+			word-wrap: break-word;
+			background-color: #f5f5f5;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		body {
+			padding-bottom: 56px;
+			box-sizing: border-box;
+		}
+
+		footer.navbar {
+			justify-content: center;
+		}
+
+		.navbar-collapse {
+			transition: all .25s;
+		}
+
+		@media (max-width: 480px) {
+			body {
+				padding-bottom: 80px;
+			}
+		}
+	</style>
+</head>
+<body>
+<header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+	<a class="navbar-brand navbar-text" href="">涟漪文件直链</a>
+	<button class="btn btn-secondary navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse navbar-right" id="navbar">
+		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+			<li class="nav-item">
+				<a class="nav-link" href="//123.ly93.cc/" target="_blank"><i class="bi bi-cloud mr-2"></i>123云盘直链</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="//ty.ly93.cc/" target="_blank"><i class="bi bi-cloud mr-2"></i>天翼云盘直链</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="//189.ly93.cc/" target="_blank"><i class="bi bi-cloud mr-2"></i>天翼云盘解析</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="//le.ly93.cc/" target="_blank"><i class="bi bi-cloud mr-2"></i>联想乐云直链</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="//pan.ly93.cc/" target="_blank"><i class="bi bi-link mr-2"></i>涟漪云盘</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="//lz.ly93.cc/" target="_blank"><i class="bi bi-cloud mr-2"></i>蓝奏云直链</a>
+			</li>
+		</ul>
+	</div>
+</header>
+<div class="container mt-3 mb-3">
+	<div class="card">
+		<div class="card-body">
+			<h4>更稳定的优质直链服务请访问右上角导航链接</h4>
+		</div>
+	</div><form enctype="multipart/form-data" class="mt-3">
+		<div class="form-group file-loading">
+			<input type="file" id="file" name="file" data-overwrite-initial="false" data-min-file-count="1" multiple/>
+		</div>
+	</form>
+
+	<div class="mt-3 d-none" id="showurl">
+		<ul id="navTab" class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="#urlcode" data-toggle="tab">URL</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#htmlcode" data-toggle="tab">HTML</a>
+			</li>
+		</ul>
+		<div id="navTabContent" class="tab-content">
+			<div class="tab-pane fade in active show" id="urlcode">
+				<pre><code></code></pre>
+			</div>
+			<div class="tab-pane fade" id="htmlcode">
+				<pre><code></code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="navbar fixed-bottom navbar-dark bg-dark">
+	<div class="navbar-text">
+		Copyright &#9400; 2023 涟漪 QQ:29397395 All rights reserved.
+	</div>
+</footer>
+<script src="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
+<script src="//lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-fileinput/5.2.7/js/fileinput.min.js" type="application/javascript"></script>
+<script src="//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-fileinput/5.2.7/js/locales/zh.min.js" type="application/javascript"></script>
+<script src="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.1/js/bootstrap.min.js" type="application/javascript"></script>
+<script charset="utf-8" type="application/javascript" src="//fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1684181958000/common.min.js.cjs"></script>
+<script type="application/javascript">
+	/**
+	 * Convert a string to HTML entities
+	 */
+	String.prototype.toHtmlEntities = function () {
+		return this.replace(/./gm, function (s) {
+			return "&#" + s.charCodeAt(0) + ";";
+		});
+	};
+
+	$(document).ready(function () {
+		function getToken (name) {
+			var param = {};
+			$.ajax({
+				url: '',
+				type: 'POST',
+				data: {name: name},
+				async: false,
+				dataType: 'json',
+				success: function (obj) {
+					param = obj;
+				},
+				error: function (error) {
+					console.log('请求失败');
+				}
+			});
+
+			return param;
+		}
+
+		$('#file').fileinput({
+			language: 'zh',
+			uploadUrl: 'https://up.qiniu.com', //https://up.qbox.me'
+			// allowedFileExtensions: ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'ico'], //仅允许上传文件格式
+			overwriteInitial: true,
+			uploadAsync: true, //默认异步上传
+			showUpload: true, //是否显示上传按钮
+			showCancel: true, //是否显示取消按钮
+			showRemove: true, //显示移除按钮
+			showPreview: true, //是否显示预览
+			showCaption: true, //是否显示标题
+			browseClass: 'btn btn-primary', //按钮样式
+			dropZoneEnabled: true, //是否显示拖拽区域
+			maxFileSize: '10240', //单位为kb
+			maxFilesNum: 100,
+			minFileCount: 1, //每次上传允许的最少文件数。如果设置为0，则表示文件数是可选的。默认为0
+			maxFileCount: 100, //表示允许同时上传的最大文件个数
+			previewFileType: ['image', 'html', 'text', 'video', 'audio', 'flash'], //预览文件类型
+			enctype: 'multipart/form-data',
+			autoOrientImage: false,
+			uploadExtraData: function (previewId, index) {
+				/*if (previewId) {
+				 var files = $('#file').fileinput('getFileList');
+				 return getToken(files[index - 1].name);
+				 }*/
+			},
+			msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
+		}).on('filebatchselected', function (event, files) {
+			window.names = {};
+			for (var k in files) {
+				/*var file = files[k].file;
+				 if (file.type === '') files[k].file = new File([file], file.name, {type: 'text/plain'});*/
+
+				window.names[k] = files[k].name;
+			}
+			// console.log(names)
+		}).on('filepreupload', function (event, data, previewId, index, fid) { //准备上传之前
+			var formData = data.formdata,
+				files    = data.files,
+				name     = window.names[fid];
+			formData.delete('fileId');
+			formData.delete('initialPreview');
+			formData.delete('initialPreviewConfig');
+			formData.delete('initialPreviewThumbTags');
+			// console.log(name, fid)
+			var obj = getToken(name);
+			if (obj.code !== 0)
+				return {
+					message: obj.msg || '上传被终止，获取令牌失败'
+				};
+
+			for (var key in obj.data) formData.append(key, obj.data[key]);
+		}).on('filebatchpreupload', function (event, data, previewId, index) {
+			var form     = data.form,
+				files    = data.files,
+				extra    = data.extra,
+				response = data.response,
+				reader   = data.reader;
+			// console.log(index, previewId, data);
+		}).on('fileuploaded', function (event, data, previewId, index, fid) {
+			var formData = data.formdata,
+				files    = data.files,
+				extra    = data.extra,
+				response = data.response;
+
+			if (!response.key) {
+				alert(response.msg || '上传失败！');
+				return;
+			}
+			var file = formData.get('file'),
+				obj  = {
+					url: 'https://fs-im-kefu.7moor-fs1.com/' + response.key,
+					name: window.names[fid],
+					mimeType: file.type
+				};$('#urlcode pre > code').append(
+				'<span style="color: red">{name}</span>\t<a href="{url}" target="_blank" rel="noopener noreferrer">{url}</a>\n'
+					.format(obj)
+			);
+			$('#htmlcode pre > code').append(function () {
+				var html = '';
+				switch (obj.mimeType.replace(/\/.*$/, '')) {
+					case 'image':
+						html = '<img src="{url}" alt="{name}"/>\n';
+						break;
+					case 'audio':
+						html = '<audio preload="auto" src="{url}" alt="{name}" title="{name}" autoplay controls></audio>\n';
+						break;
+					case 'video':
+						html = '<video preload="auto" autoplay controls><source src="{url}" type="{mimeType}" title="{name}"/></video>\n';
+						break;
+					default:
+						html = '<a href="{url}" target="_blank" rel="noopener noreferrer">{name}</a>\n';
+				}
+				return html.format(obj).toHtmlEntities();
+			});
+
+			$('#showurl').removeClass('d-none');
+		}).on('fileerror', function (event, data, msg) {
+			console.log(msg);
+		}).on('filecleared', function (event, data, msg) {
+			$('#showurl').addClass('d-none');
+			$('#urlcode pre > code').html('');
+			$('#htmlcode pre > code').html('');
+		});
+		$('.file-caption-name').attr('disabled', true);
+		$(window).resize(function () {
+			var height = $('footer').outerHeight();
+			$('body > .container').css({marginBottom: height + 'px'});
+		});
+	});
 </script>
-<body class="commonBody" style="background-image: url('/common/assets/img/BingWallpaper/2020-03-30.jpg');">
+</body>
 
-    <div class="container">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        
-        <form action="" method="post" onsubmit="whenSubmit();">
-            <div class="row cursorDefault text-center text-success">
-                <h2>
-                    <a class="label label-info" href="/">滨海工具</a>
-                    <span class="hidden-xs">在线</span>获取网页源代码
-                </h2>
-                <br />
-                
-            </div>
-            <div class="row">
-                <div class="col-xs-5 col-xs-offset-3">
-                    <input type="text" placeholder=" 网址..." required="required" name="url" class="input-lg input-block form-control autoFocus noOuterLine"/>
-                </div>
-                <div class="col-xs-3">
-                    <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
-                        点击获取
-                    </button>
-                </div>
-                
-                
-            </div>
-        </form>
-    </div>
-
-    
-    <script type="text/javascript">
-        function whenSubmit () {
-            $('#submitBtn').html('请稍后... [滨海工具]');
-        }
-    </script>
-
-</body>        
-
-
-
-        <div class="beian-wrapper commonBeian hidden-xs" style="position: fixed; z-index: 100100; bottom: 10px; left: 0; text-align: center; width: 99%;" ondblclick="this.style.display='none';">
-            <a href="https://beian.miit.gov.cn" target="_blank" style="text-decoration: none; color: #9C9C9C; font-size:12px;" title="粤ICP备2021005681号-1">
-                粤ICP备2021005681号
-            </a>
-        </div>
 </html>
